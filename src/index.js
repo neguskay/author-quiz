@@ -52,6 +52,7 @@ const state = {
     highlight: ""
 };
 
+console.log("sidney");
 function onAnswerSelected(answer){
     const isCorrect = state.turnData.author.books.some((book) => book === answer);
 
