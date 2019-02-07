@@ -1,5 +1,6 @@
 //eslint-disable-next-line
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 //import logo from './logo.svg';
 import './App.css';
@@ -73,12 +74,25 @@ function Continue(){
     </div>
   );
 }
+
+function Footer() {
+  return (<div id="footer" className="row">
+    <div className="col-12">
+        <p className="text-muted credit">
+          All images are from <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> and are in the public domain
+        </p>
+    </div>
+  </div>);
+}
+
 function AuthorQuiz({turnData, highlight, onAnswerSelected}){
   return (
     <div className="container-fluid">    
       <Hero/>
       <Turn{...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected}/>
       <Continue/> 
+      <p><Link to="/add">Add A new Author</Link> </p>
+      <Footer/>
     </div>
   );
 }
