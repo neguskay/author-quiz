@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route } from 'react-router-dom';
 import './index.css';
 import AuthorQuiz from './AuthorQuiz.js';
+import AddAuthorForm from './AddAuthorForm.js';
 import * as serviceWorker from './serviceWorker';
 import {shuffle, sample} from 'underscore';
 
@@ -62,6 +63,10 @@ function onAnswerSelected(answer){
     render();
 }
 
+function AuthorWrapper(){
+    return <AddAuthorForm onAddAuthor={console.log}/>
+}
+
 function getTurnData(authors) {
     const allBooks = authors.reduce(function (p, c, i) {
         return p.concat(c.books);
@@ -82,7 +87,7 @@ function render(){
         <BrowserRouter>
             <React.Fragment>
                 <Route exact path="/" component={App}/>
-                <Route path="/add" component={AddAuthorForm}/>
+                <Route path="/add" component={AuthorWrapper}/>
             </React.Fragment>     
         </BrowserRouter>, document.getElementById('root')
     );
@@ -92,13 +97,7 @@ function App(){
     return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected}/>;
 }
 
-function AddAuthorForm({match}){
-    return <div>
-        <h1> Add an Author</h1>
-        <p>{JSON.stringify(match)}</p >
-    </div>
 
-}
 
 render();
 
